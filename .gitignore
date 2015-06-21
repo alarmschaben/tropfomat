@@ -1,0 +1,4 @@
+.*.un~
+build/*
+firmware/*
+wifi.h
