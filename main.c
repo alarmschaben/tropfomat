@@ -6,7 +6,7 @@
 // richardaburton@gmail.com
 //////////////////////////////////////////////////
 
-#define VERSION 20
+#define VERSION 21
 #include <c_types.h>
 #include <osapi.h>
 #include <user_interface.h>
@@ -221,8 +221,8 @@ void DHTtxTimerCb(void *arg) {
             //INFO("Returning from error state.\n");
         }
 
-        MQTT_Publish(&mqttClient, MQTT_TEMPTOPIC, reading->temperature_string, sizeof reading->temperature_string, 0, 1);
-        MQTT_Publish(&mqttClient, MQTT_HUMTOPIC, reading->humidity_string, sizeof reading->humidity_string, 0, 1);
+        MQTT_Publish(&mqttClient, MQTT_TEMPTOPIC, reading->temperature_string, sizeof reading->temperature_string - 1, 0, 1);
+        MQTT_Publish(&mqttClient, MQTT_HUMTOPIC, reading->humidity_string, sizeof reading->humidity_string - 1, 0, 1);
         reading->data_ready = 0;
 
     } else {
